@@ -14,7 +14,11 @@ mysql=MySQL(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    cur=mysql.connection.cursor()
+    cur.execute("select * from students")
+    data=cur.fetchall()
+    cur.close()
+    return render_template('index.html', students = data)
 
 @app.route('/insert', methods = ['POST'])
 def insert():
