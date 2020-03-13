@@ -51,5 +51,13 @@ def update():
         mysql.connection.commit()
         return redirect(url_for('index'))
 
+@app.route('/delete/<string:id_data>', methods = ['GET'])
+def delete(id_data):
+    flash("Data deleted successfully")
+    cur = mysql.connection.cursor()
+    cur.execute("DELETE FROM students WHERE id = %s", (id_data,))
+    mysql.connection.commit()
+    return redirect(url_for('index'))
+
 if __name__ == "__main__":
     app.run(debug=True)
