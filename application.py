@@ -33,7 +33,23 @@ def insert():
         mysql.connection.commit()
         return redirect(url_for('index'))
 
+@app.route('/update', methods = ['POST', 'GET'])
+def update():
+    if request.method == 'POST':
+        id_data = request.form['id']
+        name = request.form['name']
+        email = request.form['email']
+        phone = request.form['phone']
 
+        cur = mysql.connection.cursor()
+        cur.execute("""
+        UPDATE students
+        SET name=%s, email=%s, phone=%s
+        WHERE id=%s
+        """, (name, email, phone, id_data))
+        flash("Data updated successfully")
+        mysql.connection.commit()
+        return redirect(url_for('index'))
 
 if __name__ == "__main__":
     app.run(debug=True)
