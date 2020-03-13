@@ -1,4 +1,6 @@
-<html>
+{% include "header.html" %}
+
+<!--<html>
 	<head>
 		<title>Flask CRUD App</title>
 
@@ -7,17 +9,17 @@
 	
 	</head>
 
-	<body>
+<body>
 		{% block body %}
-		<div class="container">
+<div class="container">
 			<div class="well text-center">
-				<h1>Python flask app</h1>
-			</div>
+				<h1>Python CRUD Flask App</h1>
+			</div>-->
 
 			<div class="container">
 			<div class="row">
 				<div class="col md-12">
-		<h2>Student list <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#mymodal">Add Student Data</button>  </h2>
+		<h2>Student list <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#mymodal">Add Student</button></h2>
 
 		{%with messages = get_flashed_messages() %}
 
@@ -69,22 +71,17 @@
 			
 			
 			<!--modaledit-->
-			<div id="modaledit{{row.0}}" class="modal fade" role="dialog">
+<div id="modaledit{{row.0}}" class="modal fade" role="dialog">
    <div class="modal-dialog">
-
       <div class="modal-content">
-
          <div class="modal-header">
-
-            <button type="button" class="close" data-dismiss="modal">x</button>
-
             <h4 class="modal-title">Please Update Data</h4>
-
+            <button type="button" class="close" data-dismiss="modal">x</button>
          </div>
 
-         <div class="modal-body">
+<div class="modal-body">
 
-		 <form action="{{url_for('update') }}" method="POST">
+<form action="{{url_for('update') }}" method="POST">
 
                <div class="form-group">
                   <label>Name:</label>
@@ -106,7 +103,7 @@
                   <button class="btn btn-primary" type="submit">Update Data</button>
                </div>
 
-            </form>
+</form>
 
          </div>
           <div class="modal-footer">
@@ -120,27 +117,23 @@
 
 	 {% endfor %}
 		</table>
-			</div>
+		</div>
 		</div>
 			<!--Endmodaledit-->
 
 			<!--Begin-mymodalInsert-->
 <div id="mymodal" class="modal fade" role="dialog">
    <div class="modal-dialog">
-
       <div class="modal-content">
-
          <div class="modal-header">
 
-            <button type="button" class="close" data-dismiss="modal">x</button>
+            <h4 class="modal-title float-left">Insert Student Data</h4>
 
-            <h4 class="modal-title">Please Insert Data</h4>
-
-         </div>
+		 <button type="button" class="close" data-dismiss="modal">x</button>
+</div>
 
          <div class="modal-body">
-
-		 <form action="{{url_for('insert')}}" method="POST">
+	 <form action="{{url_for('insert')}}" method="POST">
 
                <div class="form-group">
                   <label>Name:</label>
@@ -160,15 +153,12 @@
                <div class="form-group">
                   <button class="btn btn-primary" type="submit">Insert Data</button>
                </div>
-
-            </form>
+         </form>
 
          </div>
 			
 	  <div class="modal-footer">
-
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
          </div> 
 	 
 	</div>
@@ -176,20 +166,11 @@
 </div>
 
 <!--EndmymodalInsert-->
+      			{% include "footer.html" %}
 			
 			{% endblock %}			
 		
-			<div class="well">
-		<h3>Website: itprohelper.com
-			<span class="pull-right">Like me: cocotu.com</span>
-		</h3>
-	</div>
-		</div>
-
-	
-	</body>
 
 	<script type="text/javascript" src="{{url_for('static', filename='js/jquery-3.4.1.min.js')}}"></script>
 	<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
-</html>
 
